@@ -9,7 +9,7 @@ import { FileTypeFilter, PersistedChat } from '@/types/data.types'
 import {
   getChats,
   persistChat as persistChats,
-} from '@/utils/persisted-chat.utils'
+} from '@/utils/persistChat.utils'
 import { populateDirs } from '@/utils/populateDirs.util'
 import React, { useEffect, useMemo, useState } from 'react'
 
