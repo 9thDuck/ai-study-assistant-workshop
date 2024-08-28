@@ -42,14 +42,14 @@ const ChatList = ({
   selectedChatId: number | null
   onSelectChat: (chatId: number) => void
 }) => (
-  <div className="flex flex-col gap-2 p-2">
+  <div className="flex flex-col gap-1">
     {chats.map((chat) => (
       <Button
         key={chat.id}
         variant="ghost"
         className={clsx(
-          'w-full h-fit flex items-center justify-start gap-2',
-          chat.id === selectedChatId ? 'bg-white' : 'bg-gray-100',
+          'w-full h-fit flex items-center justify-start gap-2 p-2 rounded-sm',
+          chat.id === selectedChatId ? 'bg-gray-200' : 'bg-white border-none',
         )}
         onClick={() => onSelectChat(chat.id)}
       >
@@ -74,7 +74,7 @@ const Sidebar = ({
 }) => (
   <aside
     className={clsx(
-      'w-[280px] bg-gray-100 shadow-md absolute top-0 left-0 h-full transition-transform duration-300 ease-in-out',
+      'w-[280px] bg-gray-50 shadow-md absolute top-0 left-0 h-full transition-transform duration-300 ease-in-out p-2',
       isOpen ? 'translate-x-0' : '-translate-x-full',
     )}
   >
@@ -113,7 +113,7 @@ const Page = ({
   onSelectChat,
   selectedChatId,
 }: PageProps) => {
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false)
+  const [isSidebarOpen, setIsSidebarOpen] = useState(true)
 
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen)
