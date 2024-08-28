@@ -1,3 +1,5 @@
+import { ApiChatMessage } from '@/services/api'
+
 export type FileType =
   | 'folder'
   | 'image'
@@ -24,3 +26,16 @@ export type FileData = {
 }
 
 export type FileTypeFilter = Omit<FileType, 'folder'> | 'all'
+
+export type PersistedMessasge = ApiChatMessage & {
+  createdAt: number
+}
+
+export type PersistedChat = {
+  id: number
+  title: string
+  files: string[]
+  fileType: FileTypeFilter
+  messages: PersistedMessasge[]
+  createdAt: number
+}
