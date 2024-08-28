@@ -4,6 +4,7 @@ import { Search } from '@/components/Search'
 import { ChatLayout } from '@/layouts/ChatLayout/Chat.layout'
 import { useSearch } from '@/queries/useSearch'
 import { ApiChatMessage, chatApi } from '@/services/api'
+import { FileTypeFilter } from '@/types/data.types'
 import { populateDirs } from '@/utils/populateDirs.util'
 import React, { useEffect, useMemo, useState } from 'react'
 
@@ -12,12 +13,13 @@ export type HomePageProps = React.HTMLProps<HTMLDivElement>
 export const HomePage: React.FC<HomePageProps> = ({ className, ...props }) => {
   const [query, setQuery] = useState('')
   const [prompt, setPrompt] = useState('')
+  const [fileType, setFileType] = useState<FileTypeFilter>('all')
   const [selectedFiles, setSelectedFiles] = useState<string[]>([])
   const [messages, setMessages] = useState<ApiChatMessage[]>([])
   const [generating, setGenerating] = useState(false)
 
   const search = useSearch(
-    { query },
+    { query, type: fileType },
     {
       cacheTime: 0,
       enabled: false,
@@ -79,6 +81,8 @@ export const HomePage: React.FC<HomePageProps> = ({ className, ...props }) => {
       }
     >
       <Search
+        fileType={fileType}
+        setFileType={setFileType}
         compact={messages.length > 0}
         searching={search.isFetching}
         query={query}

@@ -1,8 +1,9 @@
-import { FileData } from '@/types/data.types'
+import { FileData, FileTypeFilter } from '@/types/data.types'
 import { unbody } from './unbody.client'
 
 export type ApiSearchParams = {
   query: string
+  type: FileTypeFilter
 }
 export type ApiSearchResponse = {
   files: FileData[]
@@ -11,6 +12,7 @@ export type ApiSearchResponse = {
 
 export const searchApi = async ({
   query,
+  type = 'all',
 }: ApiSearchParams): Promise<ApiSearchResponse> => {
   const queries = [
     unbody.get.googleDoc.select(
@@ -50,7 +52,21 @@ export const searchApi = async ({
       'ext',
     ),
   ]
-    .map((q) => q.additional('id').limit(10))
+    .filter((q: any) => {
+      if (type === 'all') return true
+      else if (type === 'document') return q.documentType === 'TextDocument'
+      else if (type === 'pdf') {
+        debugger
+        q.ext = 'pdf'
+        return q.documentType === 'TextDocument'
+      } else if (type === 'image') return q.documentType === 'ImageBlock'
+      else if (type === 'video') return q.documentType === 'VideoFile'
+      else if (type === 'audio') return q.documentType === 'AudioFile'
+      else return false
+    })
+    .map((q, idx, arr) => {
+      return q.additional('id').limit(10)
+    })
     .map((q) =>
       query.trim().length === 0
         ? (q as any).where(({ GreaterThan }: any) => ({

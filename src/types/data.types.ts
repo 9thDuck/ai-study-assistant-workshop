@@ -22,3 +22,5 @@ export type FileData = {
     __typename: string
   }
 }
+
+export type FileTypeFilter = Omit<FileType, 'folder'> | 'all'

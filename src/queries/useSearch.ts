@@ -9,7 +9,7 @@ export const useSearch = (
   opts: Partial<UseQueryOptions<UseSearchResponse>> = {},
 ) => {
   return useQuery<UseSearchResponse>({
-    queryKey: ['search', params.query],
+    queryKey: [`search_${params.query}_${params.type}`],
     queryFn: () => searchApi(params),
     ...opts,
   })
