@@ -2,6 +2,32 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Getting Started
 
+### Installing Dependencies
+
+Before running the project, make sure to install the necessary dependencies:
+
+```bash
+npm install
+# or
+yarn install
+```
+
+### Setting Up Environment Variables
+
+To get the Unbody project ID and API key, you need to create an account on [Unbody](https://unbody.ai) and create a new project. Create an API key from the Project Settings > Developer settings. Project ID is found in Project Settings > General > Project ID.
+
+For local development, create a `.env.local` file in the root directory and add the following environment variables:
+
+```
+NEXT_PUBLIC_UNBODY_PROJECT_ID=your_project_id
+NEXT_PUBLIC_UNBODY_API_KEY=your_api_key
+
+```
+
+For production environment on Netlify, you can set these variables in the Netlify dashboard.
+
+Replace `your_project_id` and `your_api_key` with your actual Unbody project ID and API key.
+
 First, run the development server:
 
 ```bash
@@ -31,3 +57,7 @@ This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-opti
 3. **Chat History Sidebar**: A sidebar displaying the history of all chats. You can select a chat to view it.
 4. **Dynamic Chat Ordering**: Recently added or modified chats automatically move to the top of the list.
 5. **Local Storage Persistence**: Chats are saved in the browser's local storage, allowing users to return to their conversations even after closing the browser.
+
+## Environment Variables
+
+For local development, create a `.env.local` file in the root directory and add the following environment variables:
