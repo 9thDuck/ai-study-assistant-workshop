@@ -24,17 +24,12 @@ The `pages/api` directory is mapped to `/api/*`. Files in this directory are tre
 
 This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
-## Learn More
+## Features added
 
-To learn more about Next.js, take a look at the following resources:
+Our Next.js application includes the following features:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+1. **Search Filters**: Easily find specific chats or messages.
+2. **Message Editing**: Edit messages with the ability to start a new chat based on the edited message, including its chat history.
+3. **Chat History Sidebar**: A sidebar displaying the history of all chats. You can select a chat to view it.
+4. **Dynamic Chat Ordering**: Recently added or modified chats automatically move to the top of the list.
+5. **Local Storage Persistence**: Chats are saved in the browser's local storage, allowing users to return to their conversations even after closing the browser.
