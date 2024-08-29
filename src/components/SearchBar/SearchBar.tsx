@@ -3,6 +3,7 @@ import { Button, Input, InputProps } from '@nextui-org/react'
 import clsx from 'clsx'
 import React from 'react'
 import { SearchIcon } from '../icons'
+import WithTooltip from '../WithTooltip'
 import SearchFileTypeFilter from './SearchFileTypeFilter'
 
 export type SearchBarProps = Omit<
@@ -59,17 +60,19 @@ export const SearchBar: React.FC<SearchBarProps> = ({
             className={clsx(inputProps.className)}
             {...inputProps}
           />
-          <Button
-            isIconOnly
-            radius="none"
-            variant="solid"
-            color="primary"
-            className="fill-white"
-            type="submit"
-            isLoading={pending}
-          >
-            <SearchIcon />
-          </Button>
+          <WithTooltip position="left" tooltip="Search">
+            <Button
+              isIconOnly
+              radius="none"
+              variant="solid"
+              color="primary"
+              className="fill-white"
+              type="submit"
+              isLoading={pending}
+            >
+              <SearchIcon />
+            </Button>
+          </WithTooltip>
         </div>
         <SearchFileTypeFilter fileType={fileType} setFileType={setFileType} />
       </form>

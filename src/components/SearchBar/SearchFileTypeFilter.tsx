@@ -8,6 +8,7 @@ import {
   PdfFileIcon,
   VideoFileIcon,
 } from '../icons'
+import WithTooltip from '../WithTooltip'
 
 type SearchFileTypeFilterProps = {
   fileType: FileTypeFilter
@@ -51,20 +52,28 @@ const SearchFileTypeFilter = ({
 
   return (
     <div className="flex gap-4 w-full mt-5 justify-center items-center">
-      {buttons.map(({ icon: Icon, label, color, value }) => (
-        <Button
-          key={value}
-          variant="light"
-          className={clsx(
-            'px-3 py-2 min-w-0 h-auto rounded-r-full rounded-l-full transition-all',
-            fileType === value ? 'bg-gray-100' : 'hover:bg-gray-50',
-          )}
-          onClick={() => handleClick(value)}
-        >
-          <Icon className={clsx('w-5 h-5', color)} />
-          <span className="ml-2 text-sm text-gray-600">{label}</span>
-        </Button>
-      ))}
+      {buttons.map(({ icon: Icon, label, color, value }) => {
+        const selected = fileType === value
+        return (
+          <WithTooltip
+            tooltip={`${selected ? 'Remove filter ' : 'Filter '}by ${label}`}
+            position="top"
+            key={value}
+          >
+            <Button
+              variant="light"
+              className={clsx(
+                'px-3 py-2 min-w-0 h-auto rounded-r-full rounded-l-full transition-all',
+                selected ? 'bg-gray-100' : 'hover:bg-gray-50',
+              )}
+              onClick={() => handleClick(value)}
+            >
+              <Icon className={clsx('w-5 h-5', color)} />
+              <span className="ml-2 text-sm text-gray-600">{label}</span>
+            </Button>
+          </WithTooltip>
+        )
+      })}
     </div>
   )
 }
