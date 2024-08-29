@@ -15,7 +15,7 @@ import React, { useEffect, useMemo, useState } from 'react'
 
 export type HomePageProps = React.HTMLProps<HTMLDivElement>
 
-export const HomePage: React.FC<HomePageProps> = ({ className, ...props }) => {
+export const HomePage: React.FC<HomePageProps> = () => {
   const [query, setQuery] = useState('')
   const [prompt, setPrompt] = useState('')
   const [fileType, setFileType] = useState<FileTypeFilter>('all')
