@@ -50,7 +50,7 @@ export const Search: React.FC<SearchProps> = ({
         fileType={fileType}
         setFileType={setFileType}
       />
-      <div className="flex-grow overflow-auto h-auto max-h-[75vh]">
+      <div className="flex-grow overflow-auto">
         {typeof results !== 'undefined' && (
           <SearchResult
             title={
