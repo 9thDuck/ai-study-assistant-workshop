@@ -1,4 +1,5 @@
 import { PersistedChat } from '@/types/data.types'
+import { debounce } from '@/utils/misc.utils'
 import { Button } from '@nextui-org/react'
 import clsx from 'clsx'
 import { ReactNode, useCallback, useEffect, useState } from 'react'
@@ -18,7 +19,7 @@ const SidebarToggleButton = ({ onClick }: { onClick: () => void }) => (
   <Button
     isIconOnly
     variant="ghost"
-    className="absolute top-5 left-4 border-none w-fit h-fit z-[2] rounded-lg"
+    className="border-none w-fit h-fit rounded-lg"
     onClick={onClick}
   >
     <SidebarIcon className="w-6 h-6" />
@@ -45,7 +46,7 @@ const ChatList = ({
   selectedChatId: number | null
   onSelectChat: (chatId: number) => void
 }) => (
-  <div className="flex flex-col gap-1 overflow-auto max-h-[90vh]">
+  <div className="flex flex-col gap-1 overflow-auto max-h-[90vh] pt-5">
     <h2 className="text-lg font-semibold text-center">Chats</h2>
     {chats.map((chat) => (
       <WithTooltip position="top" tooltip="Switch to this chat">
@@ -85,7 +86,9 @@ const Sidebar = ({
     )}
   >
     <div className="h-12 flex items-center justify-end px-4 w-full">
-      <NewChatButton onClick={onOpenNewChat} />
+      <WithTooltip position="bottom" tooltip="New Chat">
+        <NewChatButton onClick={onOpenNewChat} />
+      </WithTooltip>
     </div>
     <ChatList
       chats={chats}
@@ -142,7 +145,14 @@ const Page = ({
 
   return (
     <main className="h-screen flex container mx-auto relative overflow-hidden">
-      <SidebarToggleButton onClick={toggleSidebar} />
+      <div className="absolute top-5 left-4 z-[2]">
+        <WithTooltip
+          position="right"
+          tooltip={isSidebarOpen ? 'Close Sidebar' : 'Open Sidebar'}
+        >
+          <SidebarToggleButton onClick={toggleSidebar} />
+        </WithTooltip>
+      </div>
       <Sidebar
         isOpen={isSidebarOpen}
         onOpenNewChat={onOpenNewChat}
@@ -154,14 +164,4 @@ const Page = ({
     </main>
   )
 }
-
-// Helper function for debouncing
-const debounce = (fn: Function, ms = 300) => {
-  let timeoutId: ReturnType<typeof setTimeout>
-  return function (this: any, ...args: any[]) {
-    clearTimeout(timeoutId)
-    timeoutId = setTimeout(() => fn.apply(this, args), ms)
-  }
-}
-
 export default Page
