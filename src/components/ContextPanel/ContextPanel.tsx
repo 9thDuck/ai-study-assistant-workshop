@@ -61,7 +61,7 @@ export const ContextPanel: React.FC<ContextPanelProps> = ({
     <div
       className={clsx(
         className,
-        'flex flex-col items-start lg:flex-row gap-5  lg:items-end justify-between mt-2 lg:mt-0 ',
+        'flex flex-col items-start lg:flex-row gap-5  lg:items-end justify-between mt-2 lg:mt-0',
       )}
       {...props}
     >
@@ -72,7 +72,7 @@ export const ContextPanel: React.FC<ContextPanelProps> = ({
           {selected.length} of {numberOfFiles} items selected
         </span>
       </div>
-      <div className="flex flex-row gap-1">
+      <div className="flex flex-row gap-1 flex-wrap">
         {grouped.map(([key, items]) => {
           const IconComponent = iconMap[key]
 

@@ -107,7 +107,7 @@ const MainContent = ({
 }) => (
   <section
     className={clsx(
-      'flex-1 p-2 border-x-small border-gray-200 transition-margin duration-300 ease-in-out pl-5',
+      'flex-1 p-2 border-x-small border-gray-200 transition-margin duration-300 ease-in-out pl-5 max-w-full',
       isSidebarOpen ? 'ml-[280px]' : 'ml-0',
     )}
   >
@@ -144,7 +144,7 @@ const Page = ({
   }, [handleResize])
 
   return (
-    <main className="h-screen flex container mx-auto relative overflow-hidden">
+    <main className="h-screen flex container mx-auto relative overflow-hidden w-auto max-w-screen">
       <div className="absolute top-5 left-4 z-[2]">
         <WithTooltip
           position="right"

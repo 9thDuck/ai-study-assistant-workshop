@@ -41,10 +41,7 @@ export const MessageBar: React.FC<MessageBarProps> = memo(
       <div
         {...props}
         className={clsx(
-          'pb-2',
-          'transition',
-          'translate-y-0',
-          'opacity-100',
+          'pb-2 transition translate-y-0 opacity-100 w-auto max-w-full',
           hide && ['opacity-0', 'invisible', 'translate-y-full'],
           props.className,
         )}

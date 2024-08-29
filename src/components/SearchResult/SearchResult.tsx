@@ -99,8 +99,11 @@ export const SearchResult: React.FC<SearchResultProps> = ({
   }
 
   return (
-    <div className={clsx('relative flex-grow', className)} {...props}>
-      <div>
+    <div
+      className={clsx('relative flex-grow max-w-full', className)}
+      {...props}
+    >
+      <div className="w-auto max-w-full">
         {title && <h2 className="text-lg font-semibold">{title}</h2>}
         {description && <p className="text-sm text-gray-500">{description}</p>}
         <div className="py-2 pb-8">
@@ -109,15 +112,14 @@ export const SearchResult: React.FC<SearchResultProps> = ({
             selected={selected}
             compact={compactOverview}
             className={clsx(
-              'duration-300',
-              'absolute right-0 w-full transition',
+              'duration-300 right-0 w-full transition max-w-full',
               !compactOverview && 'translate-y-0',
               compactOverview && 'translate-y-[-50px]',
             )}
           />
         </div>
       </div>
-      <div className="mt-20">
+      <div className="mt-2">
         <Accordion
           isCompact
           hideIndicator
