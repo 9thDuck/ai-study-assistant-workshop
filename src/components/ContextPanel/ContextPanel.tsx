@@ -59,7 +59,10 @@ export const ContextPanel: React.FC<ContextPanelProps> = ({
 
   return (
     <div
-      className={clsx(className, 'flex flex-row items-end justify-between')}
+      className={clsx(
+        className,
+        'flex flex-col items-start lg:flex-row gap-5  lg:items-end justify-between mt-2 lg:mt-0 ',
+      )}
       {...props}
     >
       <div>

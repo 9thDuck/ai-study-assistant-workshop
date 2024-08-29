@@ -50,11 +50,11 @@ export const Search: React.FC<SearchProps> = ({
         fileType={fileType}
         setFileType={setFileType}
       />
-      <div>
+      <div className="flex-grow overflow-auto h-auto max-h-[75vh]">
         {typeof results !== 'undefined' && (
           <SearchResult
             title={
-              <div className="flex flex-row items-center gap-2">
+              <div className="flex flex-row items-center gap-2 mt-8">
                 <AnimatedText
                   maxTime={500}
                   text={compact ? query! : 'Search results'}

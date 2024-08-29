@@ -99,7 +99,7 @@ export const SearchResult: React.FC<SearchResultProps> = ({
   }
 
   return (
-    <div className={clsx('relative', className)} {...props}>
+    <div className={clsx('relative flex-grow', className)} {...props}>
       <div>
         {title && <h2 className="text-lg font-semibold">{title}</h2>}
         {description && <p className="text-sm text-gray-500">{description}</p>}
@@ -117,7 +117,7 @@ export const SearchResult: React.FC<SearchResultProps> = ({
           />
         </div>
       </div>
-      <div className="mt-8">
+      <div className="mt-20">
         <Accordion
           isCompact
           hideIndicator
@@ -129,7 +129,7 @@ export const SearchResult: React.FC<SearchResultProps> = ({
             key="root-tree"
             HeadingComponent={() => <></>}
           >
-            <div className={clsx('max-h-[500px] overflow-y-auto')}>
+            <div className={clsx('overflow-y-auto')}>
               {directoriesGroup.map((item, index) => (
                 <div key={index}>
                   <div className={clsx('flex flex-row items-center')}>

@@ -2,6 +2,7 @@ import { Button, TextAreaProps, Textarea } from '@nextui-org/react'
 import clsx from 'clsx'
 import React, { memo } from 'react'
 import { SendIcon } from '../icons/SendIcon'
+import WithTooltip from '../WithTooltip'
 
 export type MessageBarProps = Omit<
   React.HTMLProps<HTMLDivElement>,
@@ -64,22 +65,22 @@ export const MessageBar: React.FC<MessageBarProps> = memo(
             {...textareaProps}
             className={clsx(textareaProps.className)}
           />
-
-          <Button
-            className=""
-            isIconOnly
-            color="primary"
-            size="lg"
-            type="submit"
-            isDisabled={
-              disabled ||
-              loading ||
-              prompt?.replaceAll('\n', '').trim().length === 0
-            }
-            isLoading={loading}
-          >
-            <SendIcon className="fill-white" />
-          </Button>
+          <WithTooltip position="top" tooltip="Send">
+            <Button
+              isIconOnly
+              color="primary"
+              size="lg"
+              type="submit"
+              isDisabled={
+                disabled ||
+                loading ||
+                prompt?.replaceAll('\n', '').trim().length === 0
+              }
+              isLoading={loading}
+            >
+              <SendIcon className="fill-white" />
+            </Button>
+          </WithTooltip>
         </form>
       </div>
     )

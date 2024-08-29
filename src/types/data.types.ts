@@ -27,9 +27,7 @@ export type FileData = {
 
 export type FileTypeFilter = Omit<FileType, 'folder'> | 'all'
 
-export type PersistedMessasge = ApiChatMessage & {
-  createdAt: number
-}
+export type PersistedMessasge = ApiChatMessage
 
 export type PersistedChat = {
   id: number

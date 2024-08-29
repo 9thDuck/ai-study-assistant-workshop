@@ -7,10 +7,16 @@ export type ChatMessagesProps = Omit<
   'data'
 > & {
   data?: Pick<ChatMessageProps, 'message' | 'role' | 'disableAnimation'>[]
+  onStartMessageEdit: (messageIdx: number) => void
+  onCancelMessageEdit: () => void
+  messageUnderEditIdx: number | null
 }
 
 export const ChatMessages: React.FC<ChatMessagesProps> = ({
   data = [],
+  onStartMessageEdit,
+  onCancelMessageEdit,
+  messageUnderEditIdx,
   ...props
 }) => {
   const ref = useRef<HTMLDivElement>(null)
@@ -18,17 +24,29 @@ export const ChatMessages: React.FC<ChatMessagesProps> = ({
 
   useEffect(() => {
     if (!ref.current) return
-    if (messagesRef.current.length === data.length) return
+
+    const scrollToBottom = () => {
+      const scrollElement = ref.current?.parentElement || ref.current
+      scrollElement!.scrollTop = scrollElement!.scrollHeight
+    }
+
+    if (messagesRef.current.length !== data.length) {
+      scrollToBottom()
+    }
+
+    const resizeObserver = new ResizeObserver(() => {
+      scrollToBottom()
+    })
+
+    resizeObserver.observe(ref.current)
 
     messagesRef.current = data
 
-    const parent = ref.current.parentElement
-    setTimeout(() => {
-      parent?.scrollBy({
-        top: parent.scrollHeight,
-        behavior: 'smooth',
-      })
-    }, 1000)
+    return () => {
+      if (ref.current) {
+        resizeObserver.unobserve(ref.current)
+      }
+    }
   }, [data])
 
   return (
@@ -46,6 +64,9 @@ export const ChatMessages: React.FC<ChatMessagesProps> = ({
           role={message.role}
           message={message.message}
           disableAnimation={message.disableAnimation || index < data.length - 1}
+          onStartMessageEdit={() => onStartMessageEdit(index)}
+          onCancelMessageEdit={onCancelMessageEdit}
+          messageUnderEdit={messageUnderEditIdx === index}
         />
       ))}
     </div>
