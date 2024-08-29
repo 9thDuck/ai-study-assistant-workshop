@@ -28,7 +28,7 @@ This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-opti
 
 Our Next.js application includes the following features:
 
-1. **Search Filters**: Easily find specific chats or messages.
+1. **File Type Filters for Search**: You can send file type along with your query so that you can get the results only related to that file type.
 2. **Message Editing**: Edit messages with the ability to start a new chat based on the edited message, including its chat history.
 3. **Chat History Sidebar**: A sidebar displaying the history of all chats. You can select a chat to view it.
 4. **Dynamic Chat Ordering**: Recently added or modified chats automatically move to the top of the list.
