@@ -51,7 +51,7 @@ const SearchFileTypeFilter = ({
   }
 
   return (
-    <div className="flex gap-4 w-full mt-5 justify-center items-center">
+    <div className="flex gap-4 w-full mt-5 justify-center items-center flex-wrap">
       {buttons.map(({ icon: Icon, label, color, value }) => {
         const selected = fileType === value
         return (
