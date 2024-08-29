@@ -65,7 +65,7 @@ export const MessageBar: React.FC<MessageBarProps> = memo(
             {...textareaProps}
             className={clsx(textareaProps.className)}
           />
-          <WithTooltip position="top" tooltip="Send">
+          <WithTooltip position="left" tooltip="Send">
             <Button
               isIconOnly
               color="primary"
