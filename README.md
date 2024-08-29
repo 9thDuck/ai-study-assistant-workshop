@@ -1,4 +1,12 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+This project leverages Unbody AI and Next.js to create a robust study AI assistant, offering advanced chat and search functionalities based on the ability to provide it your data as context.
+
+## Features added:
+
+1. **File Type Filters for Search**: Enhance search precision by filtering results according to specific file types.
+2. **Message Editing**: Edit existing messages and initiate new conversations based on edited content, preserving chat history up to the point of the edit.
+3. **Chat History Sidebar**: Navigate through past conversations via an intuitive sidebar interface.
+4. **Dynamic Chat Ordering**: Automatically elevate recent or modified chats to the top of the list for easy access.
+5. **Local Storage Persistence**: Maintain chat data using browser's localStorage API, ensuring continuity across sessions.
 
 ## Getting Started
 
@@ -24,9 +32,9 @@ NEXT_PUBLIC_UNBODY_API_KEY=your_api_key
 
 ```
 
-For production environment on Netlify, you can set these variables in the Netlify dashboard.
-
 Replace `your_project_id` and `your_api_key` with your actual Unbody project ID and API key.
+
+For production environment on Netlify, you can set these variables in the Netlify dashboard. Check Netlify docs for more info
 
 First, run the development server:
 
@@ -49,15 +57,3 @@ You can start editing the page by modifying `pages/index.tsx`. The page auto-upd
 The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
 
 This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Features added:
-
-1. **File Type Filters for Search**: You can send file type along with your query so that you can get the results only related to that file type.
-2. **Message Editing**: Edit messages with the ability to start a new chat based on the edited message, including its chat history.
-3. **Chat History Sidebar**: A sidebar displaying the history of all chats. You can select a chat to view it.
-4. **Dynamic Chat Ordering**: Recently added or modified chats automatically move to the top of the list.
-5. **Local Storage Persistence**: Chats are saved in the browser's local storage, allowing users to return to their conversations even after closing the browser.
-
-## Environment Variables
-
-For local development, create a `.env.local` file in the root directory and add the following environment variables:
