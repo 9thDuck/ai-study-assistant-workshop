@@ -46,7 +46,10 @@ export const MessageBar: React.FC<MessageBarProps> = memo(
           props.className,
         )}
       >
-        <form className="flex flex-row gap-2 items-end" onSubmit={onFormSubmit}>
+        <form
+          className="flex flex-row gap-2 items-end p-3"
+          onSubmit={onFormSubmit}
+        >
           <Textarea
             size="lg"
             minRows={1}
