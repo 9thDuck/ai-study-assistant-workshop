@@ -24,9 +24,7 @@ The `pages/api` directory is mapped to `/api/*`. Files in this directory are tre
 
 This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
-## Features added
-
-Our Next.js application includes the following features:
+## Features added:
 
 1. **File Type Filters for Search**: You can send file type along with your query so that you can get the results only related to that file type.
 2. **Message Editing**: Edit messages with the ability to start a new chat based on the edited message, including its chat history.
